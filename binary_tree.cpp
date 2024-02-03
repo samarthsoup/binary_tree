@@ -92,21 +92,24 @@ void binary_tree::create(node *root){
 
         bool invalidPath = false;
 
-        for(char c: path) {
+        for(int i = 0; i < path.length(); i++) {
+            char c = path[i];
+
             if (c == '0') {
-                if (temp->left == nullptr) {
+                if (i == path.length()-1){
                     temp->left = ptr;
                 } else {
                     temp = temp->left;
                 }
             } else if (c == '1') {
-                if (temp->right == nullptr) {
+                if (i == path.length()-1){
                     temp->right = ptr;
                 } else {
                     temp = temp->right;
                 }
             } else {
-                cerr << "Invalid path" << endl;
+                cerr << "invalid path" << endl;
+                invalidPath = true;
                 break;
             }
             if(invalidPath) break;
