@@ -97,15 +97,39 @@ void binary_tree::create(node *root){
 
             if (c == '0') {
                 if (i == path.length()-1){
-                    temp->left = ptr;
+                    if(temp == NULL){
+                        cerr << "invalid path" << endl;
+                        invalidPath = true;
+                        break;
+                    } else {
+                        temp->left = ptr;
+                    }
                 } else {
-                    temp = temp->left;
+                    if(temp == NULL){
+                        cerr << "invalid path" << endl;
+                        invalidPath = true;
+                        break;
+                    } else {
+                        temp = temp->left;
+                    }
                 }
             } else if (c == '1') {
                 if (i == path.length()-1){
-                    temp->right = ptr;
+                    if(temp == NULL){
+                        cerr << "invalid path" << endl;
+                        invalidPath = true;
+                        break;
+                    } else {
+                        temp->right = ptr;
+                    }
                 } else {
-                    temp = temp->right;
+                    if(temp == NULL){
+                        cerr << "invalid path" << endl;
+                        invalidPath = true;
+                        break;
+                    } else {
+                        temp = temp->right;
+                    }
                 }
             } else {
                 cerr << "invalid path" << endl;
