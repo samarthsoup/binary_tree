@@ -72,49 +72,48 @@ void binary_tree::create(node *root){
     do {
         cout << "add data?" << endl;
         cin >> choice;
-        if (choice != 'q'){
-            node *temp = root;
-            node *ptr = new node();
-            string path;
+        if (choice == 'q') break;
 
-            cout << "path: ";
-            cin>>path;
-            cout<<"\ndata: ";
-            cin>>ptr->data;
-            cout<<endl;
+        node *temp = root;
+        node *ptr = new node();
+        string path;
 
-            bool invalidPath = false;
+        cout << "path: ";
+        cin>>path;
+        cout<<"\ndata: ";
+        cin>>ptr->data;
+        cout<<endl;
 
-            for(int i = 0; i < path.length(); i++) {
-                char c = path[i];
+        bool invalidPath = false;
 
-                if(temp == NULL){
-                    cerr << "invalid path" << endl;
-                    invalidPath = true;
-                    break;
-                }
+        for(int i = 0; i < path.length(); i++) {
+            char c = path[i];
 
-                if (c == '0') {
-                    if (i == path.length()-1){
-                        temp->left = ptr;   
-                    } else {
-                        temp = temp->left;
-                    }
-                } else if (c == '1') {
-                    if (i == path.length()-1){
-                        temp->right = ptr;   
-                    } else {
-                        temp = temp->right;
-                    }
-                } else {
-                    cerr << "invalid path" << endl;
-                    invalidPath = true;
-                    break;
-                }
-                if(invalidPath) break;
+            if(temp == NULL){
+                cerr << "invalid path" << endl;
+                invalidPath = true;
+                break;
             }
+
+            if (c == '0') {
+                if (i == path.length()-1){
+                    temp->left = ptr;   
+                } else {
+                    temp = temp->left;
+                }
+            } else if (c == '1') {
+                if (i == path.length()-1){
+                    temp->right = ptr;   
+                } else {
+                    temp = temp->right;
+                }
+            } else {
+                cerr << "invalid path" << endl;
+                invalidPath = true;
+                break;
+            }
+            if(invalidPath) break;
         }
-        
     }while(choice != 'q');
 }
 
